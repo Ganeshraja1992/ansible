@@ -1,0 +1,33 @@
+---
+
+- hosts: all
+  tasks:
+
+    - name: ubuntu update
+      apt:
+       update_cache: true
+
+    - name: installing apache2
+      apt: 
+        name: apache2
+        state: present
+
+    - name: installing php
+      apt:
+        name: libapache2-mod-php
+        state: latest
+          
+    - name: httpd config
+      template:
+        src: ./httpd.conf.tmpl
+        dest: /etc/httpd/conf/httpd.conf
+
+    - name: virtual host
+      template:
+        src: "./virtual.conf.tmpl"
+        dest: "/etc/httpd/conf.d/"
+
+    - name: documnet root
+      file:
+       path: "/var/www/html/"
+       state: directory

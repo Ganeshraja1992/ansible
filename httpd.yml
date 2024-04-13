@@ -1,0 +1,14 @@
+---
+- hosts: all
+
+  tasks:
+    - name: Install Apache.
+      command: apt install -y apache2
+    - name: Copy configuration files.
+      command: >
+         cp apache2.conf /etc/apache2/conf/apache2.conf
+    - command: >
+         cp apache2.conf /etc/apache2/conf/apache2.conf
+    - name: Start Apache and configure it to run at boot.
+      command: service apache2 start
+    - command: chkconfig apache2 on
