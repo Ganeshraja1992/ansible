@@ -1,0 +1,20 @@
+---
+
+- hosts: all
+  tasks:
+  
+  - name: udpate
+    apt:
+     update_cache: true
+  - name: install docker 
+    apt: 
+     name: docker
+  - name:
+    systemd:
+     name: docker
+     state: started
+     enabled: true
+  - name:
+    apt:
+     name: docker
+     state: latest
