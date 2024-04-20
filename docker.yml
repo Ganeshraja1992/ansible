@@ -3,18 +3,18 @@
 - hosts: all
   tasks:
   
-  - name: udpate
+  - name: udpate ubuntu
     apt:
      update_cache: true
+
   - name: install docker 
     apt: 
      name: docker
-  - name:
+     state: latest
+
+  - name: docker start
     systemd:
      name: docker
      state: started
      enabled: true
-  - name:
-    apt:
-     name: docker
-     state: latest
+

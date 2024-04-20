@@ -1,0 +1,13 @@
+---
+
+- name: handlers
+  hosts: all
+  become: yes
+  roles:
+    - handlers
+
+ handlers:
+   - name: Restart Nginx
+     service:
+       name: nginx
+       state: restarted

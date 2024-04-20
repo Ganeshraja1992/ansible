@@ -4,14 +4,13 @@
     - name: update the package
       apt:
         update_cache: true
-      when: ansible_os_family == "debian"
+      
     - name: install apache2 package
       apt:
         name: apache2
         state: latest
-      when: ansible_os_family == "debian"
+      
     - name: install php
       apt:
         name: libapache2-mod-php
-        state: latest
-      when: ansible_os_family == "debian"        
+        state: latest     

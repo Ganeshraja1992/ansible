@@ -1,0 +1,23 @@
+---
+
+- hosts: all
+  tasks:
+    
+  - name: nginx install
+    apt:
+     name: nginx
+     update_cache: true
+     state: latest
+  - name:
+    systemd:
+     name: nginx
+     state: started
+     enabled: true
+
+  - name: index.html copy
+    template: src=index.html dest=/var/www/html/index.html
+
+  - name: ansible.html copy
+    template: src=ansible.html dest=/var/www/html/ansible.html
+    notify:
+      - Restart Nginx

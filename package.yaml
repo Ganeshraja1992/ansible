@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: true
+  tasks:
+    - name: install apache and php
+      apt:
+        name:
+          - "{{ apache }}"
+          - "{{ php }}"
+        state: latest

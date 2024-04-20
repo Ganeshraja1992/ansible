@@ -1,0 +1,41 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: update the hosts
+    apt:
+      update_cache: yes
+
+  - name: install apache2
+    apt :
+      name: apache2
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+  - name: install php
+    apt : 
+      name: libapache2-mod-php
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+#  - name: update the hosts
+#    yum:
+#      update_cache: yes
+#      use_backend: auto
+     
+#  - name: install httpd
+#    yum:
+#      name: httpd
+#      state: latest
+#      use_backend: auto
+#    when: ansible_distribution == "CentOS"
+
+#  - name: php
+#    yum:
+#      name: php
+#      state: latest
+#      use_backend: auto
+#    when: ansible_distribution == "CentOS"
+
